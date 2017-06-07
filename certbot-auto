@@ -1006,7 +1006,8 @@ def main():
     try:
         downloads = [hashed_download(url, temp, digest)
                      for url, digest in PACKAGES]
-        pip install --upgrade pip
+        check_output('pip install --upgrade pip',
+                             shell=True)
         check_output('pip install --no-index --no-deps -U ' +
                      ' '.join(quote(d) for d in downloads),
                      shell=True)
